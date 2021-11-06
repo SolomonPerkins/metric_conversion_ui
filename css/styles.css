@@ -1,0 +1,52 @@
+.capitalize-text {
+    text-transform: capitalize;
+}
+
+.main-wrapper {
+    width: 30%;
+    margin: 0 auto;
+    border: 1px solid blue;
+    padding: 4em;
+
+}
+
+#error-section {
+    color: red;
+}
+
+h3 {
+    text-align: center;
+    margin-bottom: 1em;
+    border-bottom: 1px solid blue;
+    padding-bottom: 2em;
+}
+
+.action label,
+.sub-section label {
+    min-width: 7em;
+    display: inline-block;
+    color: blue;
+    line-height: 4em;
+}
+
+.action select,
+.sub-section select,
+.sub-section input {
+    padding: 1em 2em;
+    min-width: 11em;
+    display: inline-block;
+}
+
+hr {
+    border: 1px solid aliceblue;
+}
+
+#result {
+
+    padding-top: 1em;
+}
+
+#result strong {
+    color: blue;
+}
+

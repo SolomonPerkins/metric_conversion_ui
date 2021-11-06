@@ -1,0 +1,48 @@
+<div class="main-wrapper ng-scope">
+    <h3>Unit Conversion</h3>
+    <small>A tool to help you convert any measurement.</small>
+    <p id="error-section" ng-if="errorMessage" class="ng-binding ng-scope">{{errorMessage}}</p>
+    <br/>
+
+    <div class="action">
+        <label for="unit">Measurement</label>
+        <select id="unit" 
+            ng-model="selectedUnit" 
+            ng-options="unit for unit in units" 
+            ng-change="getListByUnit(unit)">
+        </select>
+        
+        
+        <!-- The section which should be shown once we retrieve results from the measure type call. -->
+        <div class="sub-section">
+            <label for="from">From</label>
+            <select id="unit" 
+                ng-model="from" 
+                ng-options="measure as measure.singular for measure in list"
+                ng-change="reset()">
+            </select>
+            
+            <hr>
+            <label for="to">To</label>
+            <select id="unit" 
+                ng-model="to" 
+                ng-options="measure as measure.singular for measure in list"
+                ng-change="reset()"></select>
+            
+            <!-- The value -->
+            <hr>
+            <label for="value">Value</label>
+            <input id="value" 
+                placeholder="Please enter value" 
+                type="number" 
+                ng-model="value" 
+                pattern="[0-9]+" 
+                ng-change="reset()"/>
+            <hr>
+            <input type="button" ng-click="convert()" value="Convert">
+            <label for="result">&nbsp;</label>
+            <!-- ngIf: result -->
+            <p id="result" ng-if="result">Converting {{value}} {{from.abbr}} to {{to.abbr}} is <strong>{{result | number: 2}} {{to.abbr}}</strong></p>
+        </div>
+    </div>
+</div>
