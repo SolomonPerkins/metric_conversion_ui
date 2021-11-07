@@ -3,7 +3,7 @@
 }
 
 .main-wrapper {
-    width: 30%;
+    min-width: 30%;
     margin: 0 auto;
     border: 1px solid blue;
     padding: 4em;
@@ -25,14 +25,12 @@ h3 {
 .sub-section label {
     min-width: 7em;
     display: inline-block;
-    color: blue;
     line-height: 4em;
 }
 
 .action select,
 .sub-section select,
 .sub-section input {
-    padding: 1em 2em;
     min-width: 11em;
     display: inline-block;
 }

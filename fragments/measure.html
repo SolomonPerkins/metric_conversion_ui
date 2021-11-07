@@ -12,37 +12,70 @@
             ng-change="getListByUnit(unit)">
         </select>
         
+        <table>
+            <tr>
+              <td>Student Name</td>
+              <td>Input Value</td>
+              <td>Input Unit</td>
+              <td>Target Unit</td>
+              <td>Student Response</td>
+              <td>Output</td>
+            </tr>
+            <tr ng-repeat="row in dataset">
+              <td>
+                <input id="value-{{$index}}" 
+                    placeholder="Student Name" 
+                    type="text" 
+                    ng-model="row.student.name" 
+                    pattern="[a-zA-Z'.]+"/>
+              </td>
+              <td>
+                <input id="unit-{{$index}}" 
+                    placeholder="Input Value" 
+                    type="number" 
+                    ng-model="row.value"/>
+              </td>
+              <td>
+                <select id="unit-{{$index}}" 
+                    ng-model="row.from"
+                    ng-options="measure as measure.singular for measure in list">
+                </select>
+              </td>
+              <td>
+                <select id="unit" 
+                ng-model="row.to" 
+                ng-options="measure as measure.singular for measure in list"></select>
+              </td>
+              <td>
+                <input id="unit-{{$index}}" 
+                    placeholder="Student Response"
+                    type="number" 
+                    ng-model="row.student.answer"/>
+              </td>
+              <td> 
+                  <p ng-if="submitted" 
+                    title="Correct answer is {{row.result | number:2}}">
+                    {{(row.result | number:2) == row.student.answer? 'correct' : 'incorrect'}}</p>
+              </td>
+            </tr>
+          </table>
         
         <!-- The section which should be shown once we retrieve results from the measure type call. -->
-        <div class="sub-section">
-            <label for="from">From</label>
-            <select id="unit" 
-                ng-model="from" 
-                ng-options="measure as measure.singular for measure in list"
-                ng-change="reset()">
-            </select>
-            
-            <hr>
-            <label for="to">To</label>
-            <select id="unit" 
-                ng-model="to" 
-                ng-options="measure as measure.singular for measure in list"
-                ng-change="reset()"></select>
-            
+                    
             <!-- The value -->
             <hr>
-            <label for="value">Value</label>
+            <!-- <label for="value">Value</label>
             <input id="value" 
                 placeholder="Please enter value" 
                 type="number" 
                 ng-model="value" 
-                pattern="[0-9]+" 
-                ng-change="reset()"/>
-            <hr>
-            <input type="button" ng-click="convert()" value="Convert">
-            <label for="result">&nbsp;</label>
-            <!-- ngIf: result -->
-            <p id="result" ng-if="result">Converting {{value}} {{from.abbr}} to {{to.abbr}} is <strong>{{result | number: 2}} {{to.abbr}}</strong></p>
+                pattern="[0-9.]+"/>
+            <hr> -->
+            
+            <input type="button" ng-click="convert()" value="Convert">&nbsp;
+            <input type="button" class="add-more" ng-click="addRow()" value="Add Row">&nbsp;
+            <input type="button" class="add-more" ng-click="reset()" value="Reset">
+            
         </div>
     </div>
 </div>
